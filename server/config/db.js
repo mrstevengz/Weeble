@@ -1,8 +1,8 @@
-const mongoose = require("mongoose");
+import { connect, set } from "mongoose";
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGODB_URI);
+    const conn = await connect(process.env.MONGODB_URI);
     console.log("MongoDB Connected on:", conn.connection.host);
   } catch (error) {
     console.error("MongoDB connection error:", error.message);
@@ -10,6 +10,6 @@ const connectDB = async () => {
   }
 };
 
-mongoose.set("strictQuery", true);
+set("strictQuery", true);
 
-module.exports = connectDB;
+export default connectDB;

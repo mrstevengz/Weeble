@@ -1,11 +1,11 @@
-const path = require("path");
-const express = require("express");
-const cors = require("cors");
+import path from "path";
+import express, { json, urlencoded } from "express";
+import cors from "cors";
 require("dotenv").config();
 
-const connectDB = require("./config/db");
-const Character = require("./models/Character");
-const characterRoutes = require("./routes/characters");
+import connectDB from "./config/db";
+import Character from "./models/Character";
+import characterRoutes from "./routes/characters";
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -20,8 +20,8 @@ app.use(
 );
 
 //Para aceptar http requests en json
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(json());
+app.use(urlencoded({ extended: true }));
 app.use("/api/characters", characterRoutes);
 
 app.listen(port, () => {

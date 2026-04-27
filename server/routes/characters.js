@@ -1,7 +1,7 @@
-const express = require("express");
-const Character = require("../models/Character");
+import { Router } from "express";
+import Character from "../models/Character";
 
-const router = express.Router();
+const router = Router();
 
 //CRUD de la app
 
@@ -33,4 +33,4 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

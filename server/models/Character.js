@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+import { Schema, model } from "mongoose";
 
-const characterSchema = new mongoose.Schema(
+const characterSchema = new Schema(
   {
     name: {
       type: String,
@@ -26,4 +26,4 @@ const characterSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
-module.exports = mongoose.model("Character", characterSchema);
+export default model("Character", characterSchema);
