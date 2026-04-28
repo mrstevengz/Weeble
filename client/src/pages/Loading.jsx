@@ -2,28 +2,9 @@ import { use, useEffect } from 'react'
 import {useNavigate} from 'react-router-dom'
 import charsApi from '../services/charsApi'
 
-function Loading({
-    setCharacters, setLoading, setError, 
-    loading, error}) {
+function Loading({ loading, error}) {
 
         const navigate = useNavigate()
-
-        useEffect(() => {
-            async function loadChars() {
-                try {
-                    setLoading(true)
-
-                    const data = await charsApi.getCharacters()
-                    setCharacters(data)
-                } catch (error) {
-                    console.log(error);
-                    setError("Failed to load characters")
-                } finally {
-                    setLoading(false)
-                }
-            }
-            loadChars()
-        }, [])
 
         function enterApp() {
             navigate("/home")

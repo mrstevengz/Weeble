@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './styles/App.css'
 import Loading from './pages/Loading.jsx'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
@@ -12,14 +12,28 @@ function App() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
 
+    useEffect(() => {
+            async function loadChars() {
+                try {
+                    setLoading(true)
+
+                    const data = await charsApi.getCharacters()
+                    setCharacters(data)
+                } catch (error) {
+                    console.log(error);
+                    setError("Failed to load characters")
+                } finally {
+                    setLoading(false)
+                }
+            }
+            loadChars()
+        }, [])
+
   return (
     <BrowserRouter> 
       <Routes>
         <Route path = "/" element =
         {<Loading 
-        setLoading={setLoading} 
-        setCharacters={setCharacters}
-        setError = {setError}
         loading = {loading}
         error = {error}
         />}>

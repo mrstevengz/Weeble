@@ -3,7 +3,6 @@ function CharacterCard({ character }) {
         <article className="character-card">
             <h2 className="character-name">{character.name}</h2>
             <p className="character-meta">{character.series}</p>
-            <p className="character-meta">{character.hair_color}</p>
         </article>
     );
 }

@@ -64,6 +64,8 @@
     background-color 160ms ease,
     transform 160ms ease,
     box-shadow 160ms ease;
+  cursor: pointer;
+  user-select: none;
 }
 
 .character-card:last-child {
@@ -93,7 +95,7 @@
   margin: 0;
   line-height: 1.35;
   overflow-wrap: anywhere;
-  flex: 0 1 22%;
+  flex: 1 1 22%;
   min-width: 0;
   text-align: center;
 }

@@ -20,6 +20,7 @@ function InputCharacter({ characters }) {
                 />
                 {text.trim() && (
                     <div className="input-dropdown">
+                        
                         {filteredCharacters.length > 0 ? (
                             filteredCharacters.map((character) => (
                                 <CharacterCard
