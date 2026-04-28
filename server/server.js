@@ -1,11 +1,11 @@
 import path from "path";
 import express, { json, urlencoded } from "express";
 import cors from "cors";
-require("dotenv").config();
+import "dotenv/config";
 
-import connectDB from "./config/db";
-import Character from "./models/Character";
-import characterRoutes from "./routes/characters";
+import connectDB from "./config/db.js";
+import Character from "./models/Character.js";
+import characterRoutes from "./routes/characters.js";
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -14,7 +14,7 @@ connectDB();
 
 app.use(
   cors({
-    origin: [`http:localhost:3000`, "http:localhost:5000"],
+    origin: [`http://localhost:3000`, "http://localhost:5000"],
     credentials: true,
   }),
 );

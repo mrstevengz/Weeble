@@ -2,11 +2,15 @@ import axios from "axios";
 
 class CharactersApi {
   constructor() {
-    this._apiUrl = "api/characters";
+    this._apiUrl = "/api/characters";
   }
 
-  getCharacters() {
-    return axios.get(this._apiUrl);
+  async getCharacters() {
+    const res = await axios.get(this._apiUrl);
+    if (!res.data.success) {
+      throw new Error("Failed to fetch characters");
+    }
+    return res.data.data;
   }
 }
 
