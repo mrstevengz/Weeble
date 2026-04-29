@@ -28,20 +28,22 @@
 
 .input-container {
   position: relative;
-  width: min(420px, 90vw);
+  width: min(840px, 90vw);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .input-container input {
-  width: 100%;
+  width: min(420px, 100%);
   box-sizing: border-box;
   padding: 0.75rem 1rem;
 }
 
 .input-dropdown {
-  position: absolute;
   top: calc(100% + 0.5rem);
   left: 0;
-  width: 100%;
+  width: min(420px, 100%);
   background: #fff;
   border: 1px solid #d6d6d6;
   border-radius: 8px;
@@ -49,6 +51,8 @@
   overflow: hidden;
   color: #08060d;
   text-align: left;
+  display: flex;
+  flex-direction: column;
 }
 
 .character-card {
@@ -100,6 +104,58 @@
   text-align: center;
 }
 
+.response-categories,
+.character-response {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  margin-top: 10px;
+  padding: 0.9rem 1rem;
+  background: #fff;
+  border: 1px solid #d6d6d6;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  color: #000000;
+}
+
+.character-response h2 {
+  color: #353333;
+}
+
+.response-categories {
+  background: #08060d;
+  color: #fff;
+  box-shadow: none;
+  font-weight: 700;
+}
+
+.response-categories h3,
+.response-categories p,
+.character-response h2,
+.character-response p {
+  margin: 0;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.response-categories h3,
+.character-response h2 {
+  flex: 1 1 45%;
+  min-width: 0;
+  font-size: 1rem;
+}
+
+.response-categories p,
+.character-response p {
+  flex: 1 1 22%;
+  min-width: 0;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
 .empty-state {
   padding: 0.75rem 1rem;
   color: #6b6375;
@@ -114,8 +170,18 @@
   }
 
   .character-name,
-  .character-meta {
+  .character-meta,
+  .response-categories h3,
+  .response-categories p,
+  .character-response h2,
+  .character-response p {
     flex: 1 1 100%;
-    text-align: left;
+    text-align: center;
+  }
+
+  .response-categories,
+  .character-response {
+    flex-wrap: wrap;
+    align-items: flex-start;
   }
 }
