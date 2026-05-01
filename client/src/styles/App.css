@@ -1,3 +1,12 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100svh;
+  gap: 1rem;
+  box-sizing: border-box;
+}
+
 .loading-page {
   display: flex;
   justify-content: center;
@@ -23,7 +32,6 @@
 .main-card {
   display: flex;
   justify-content: center;
-  padding-top: 4rem;
 }
 
 .input-container {
@@ -184,4 +192,45 @@
     flex-wrap: wrap;
     align-items: flex-start;
   }
+}
+
+/* NAVBAR CSS */
+
+.navbar-content {
+  padding: 2px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: #35333362;
+  margin-bottom: 1rem;
+}
+
+.navbar-text {
+  font-weight: bold;
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  line-height: 1.1;
+  letter-spacing: 0;
+  margin: 0.75rem 0;
+}
+
+/*MODAL STYLING*/
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100dvw;
+  height: 100dvh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
 }

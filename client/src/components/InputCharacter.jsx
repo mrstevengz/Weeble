@@ -1,22 +1,44 @@
 import { useState } from "react";
 import CharacterCard from "./CharacterCard";
 import CharacterResponse from "./CharacterResponse";
+import ResetModal from "./ResetModal";
 
 function InputCharacter({ characters }) {
+    //Variables para manejar los valores del API
     const [text, setText] = useState("");
     const [selectedCharacters, setSelectedCharacters] = useState([]);
     const characterList = Array.isArray(characters) ? characters : [];
 
+    //Variable para manejar el abrir/cerrar del modal cuando termina un juego
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    //Variables para manejar la cantidad de intentos/guesses
+    const MAX_GUESSES = 5;
+    const currentGuessNumber = Math.min(selectedCharacters.length + 1, MAX_GUESSES);
+    const isGameOver = selectedCharacters.length >= MAX_GUESSES;
+
+    //Variable para almacener los valores de los personajes en un array y quitarles espacios/mayusculas
     const filteredCharacters = characterList.filter((character) =>
         character.name.toLowerCase().includes(text.trim().toLowerCase())
     );
 
-    function handleSelectCharacter(character) {
-        setSelectedCharacters((previousCharacters) => [
-            ...previousCharacters,
-            character
-        ]);
-        setText("");
+  function handleSelectCharacter(character) {
+    if (isGameOver) return;
+
+    const nextCharacters = [...selectedCharacters, character];
+    
+
+    setSelectedCharacters(nextCharacters);
+    setText("");
+
+    if (nextCharacters.length === MAX_GUESSES) {
+        setIsModalOpen(true);
+    }
+}
+
+
+    function handleCloseModal() {
+        setIsModalOpen(false)
     }
     
 
@@ -27,9 +49,10 @@ function InputCharacter({ characters }) {
                 <input
                     value={text}
                     onChange={(e) => setText(e.target.value)}
-                    placeholder={`Guess ${selectedCharacters.length + 1} of 5`}
+                    placeholder={`Guess ${currentGuessNumber} of ${MAX_GUESSES}`}
+                    disabled={isGameOver}
                 />
-                {text.trim() && (
+                {!isGameOver && text.trim() && (
                     <div className="input-dropdown">
                         {filteredCharacters.length > 0 ? 
                         (filteredCharacters.map((character) =>
@@ -61,6 +84,14 @@ function InputCharacter({ characters }) {
                     selectedCharacter={character} />
                     )
                 })}
+
+                <ResetModal isOpen={isModalOpen} onClose = {handleCloseModal}>
+                    {isModalOpen == true && (
+                        <div>
+                            <h2>YOU LOST</h2>
+                        </div>
+                    )}
+                </ResetModal>
                 
             </div>
         </div>

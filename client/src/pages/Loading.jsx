@@ -16,7 +16,7 @@ function Loading({ loading, error}) {
                 <h2>Guess the anime character</h2>
                 {error && <p>{error}</p>}
                 
-                <button disabled = {loading} onClick={enterApp}>{loading ? "Loading..." : "Enter App"}</button>
+                <button disabled = {error} onClick={enterApp}>{loading ? "Loading..." : "Enter App"}</button>
             </section>
         )
 }
