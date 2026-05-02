@@ -129,8 +129,23 @@
   color: #000000;
 }
 
+/* RESPONSE STYLING */
 .character-response h2 {
   color: #353333;
+}
+
+.character-response h2.correct {
+  background-color: green;
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 6px;
+}
+
+.character-response p.correct {
+  background-color: green;
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 6px;
 }
 
 .response-categories {
