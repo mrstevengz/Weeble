@@ -91,7 +91,6 @@ function InputCharacter({ characters }) {
     return (
         <div className="main-card">
             <div className="input-container">
-                <h2>Guess the character</h2>
                 <input
                     value={text}
                     onChange={(e) => setText(e.target.value)}
@@ -144,10 +143,22 @@ function InputCharacter({ characters }) {
                 {/* Modal cuando se PIERDE el juego (5/5 intentos) */}
 
                 <ResetModal isOpen={isModalOpen} onClose = {handleCloseModal}>
-                    {isModalOpen === true && (
-                        <div>
-                            <h2>YOU LOST</h2>
-                        </div>
+                    {secretCharacter && (
+                        hasLost ? (
+                        <>
+                            <h2 className="modal-result">YOU LOST</h2>
+                            <p className="modal-text">Your Character Was:</p>
+                            <p className="modal-char">{secretCharacter.name}</p>
+                            <p className="modal-series">From: {secretCharacter.series}</p>
+                        </>
+                    ): (
+                        <>
+                            <h2 className="modal-result" >YOU WON</h2>
+                            <p className="modal-text">Your Character Was:</p>
+                            <p className="modal-char">{secretCharacter.name}</p>
+                            <p className="modal-series">From: {secretCharacter.series}</p>
+                        </>
+                    )
                     )}
                 </ResetModal>
                 
