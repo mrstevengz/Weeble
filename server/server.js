@@ -14,15 +14,15 @@ connectDB();
 
 app.use(
   cors({
-    origin: [`http://localhost:3000`, "http://localhost:5000"],
     credentials: true,
   }),
 );
 
 //Para aceptar http requests en json
-app.use(json());
-app.use(urlencoded({ extended: true }));
+app.use(json({ limit: "10kb" }));
+app.use(urlencoded({ extended: true, limit: "10kb" }));
 app.use("/api/characters", characterRoutes);
+app.set("trust proxy", 1);
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
