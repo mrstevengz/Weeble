@@ -236,7 +236,7 @@
 
 .input-container {
   position: relative;
-  width: min(840px, 90vw);
+  width: min(950px, 90vw);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -369,86 +369,88 @@
 .response-categories,
 .character-response {
   width: 100%;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem 1rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 2fr 1.25fr 1.3fr 1.7fr 1.2fr;
+  column-gap: 1px;
   margin-top: 0.65rem;
-  padding: 0.85rem 1rem;
-  border-radius: 8px;
+  border-radius: 10px;
+  border: 1px solid rgba(184, 164, 255, 0.2);
+  overflow: hidden;
 }
 
 .response-categories {
+  background: rgba(184, 164, 255, 0.16);
+  box-shadow:
+    0 12px 28px rgba(8, 6, 13, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.response-categories h3,
+.response-categories p {
   background:
     linear-gradient(
       180deg,
-      rgba(255, 239, 239, 0.13),
-      rgba(255, 255, 255, 0.301)
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.04)
     ),
     #15111d;
-  border: 1px solid rgba(184, 164, 255, 0.2);
-  box-shadow: 0 12px 28px rgba(8, 6, 13, 0.2);
-  color: #efe8ff;
-  font-weight: 800;
+  margin: 0;
+  padding: 0.8rem 0.55rem;
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  line-height: 1.3;
+  text-transform: uppercase;
+  color: #c4b5ff;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  box-sizing: border-box;
 }
 
 .character-response {
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.09),
-      rgba(255, 255, 255, 0.02)
-    ),
-    #201a2b;
-  border: 1px solid rgba(184, 164, 255, 0.16);
+  background: rgba(184, 164, 255, 0.1);
+  border: 1px solid rgba(184, 164, 255, 0.432);
   box-shadow:
     0 14px 30px rgba(8, 6, 13, 0.22),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  color: #eee9f8;
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
   animation: response-enter 420ms cubic-bezier(1, 0.9, 0.2, 1) both;
   transform-origin: top center;
 }
 
+.character-response h2,
+.character-response p {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.07),
+      rgba(255, 255, 255, 0.01)
+    ),
+    #201a2b;
+  color: #eee9f8;
+  margin: 0;
+  padding: 0.85rem 0.6rem;
+  text-align: center;
+  font-size: 0.88rem;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  box-sizing: border-box;
+}
+
 .character-response h2 {
+  font-size: 0.92rem;
+  font-weight: 700;
   color: #ffffff;
-  font-weight: 800;
 }
 
 .character-response h2.correct,
 .character-response p.correct {
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0)),
-    #24805f;
-  border: 1px solid rgba(147, 255, 210, 0.24);
-  box-shadow: 0 8px 18px rgba(36, 128, 95, 0.18);
-  color: #f4fff9;
-  padding: 0.5rem 0.65rem;
-  border-radius: 6px;
-}
-
-.response-categories h3,
-.response-categories p,
-.character-response h2,
-.character-response p {
-  margin: 0;
-  line-height: 1.25;
-  overflow-wrap: anywhere;
-}
-
-.response-categories h3,
-.character-response h2 {
-  flex: 1 1 45%;
-  min-width: 0;
-  font-size: 1rem;
-}
-
-.response-categories p,
-.character-response p {
-  flex: 1 1 22%;
-  min-width: 0;
-  text-align: center;
-  font-size: 0.95rem;
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0)),
+    rgba(9, 216, 140, 0.616);
+  color: #c8fff0;
+  font-weight: 700;
 }
 
 .empty-state {
@@ -491,19 +493,34 @@
   }
 
   .character-name,
-  .character-meta,
-  .response-categories h3,
-  .response-categories p,
-  .character-response h2,
-  .character-response p {
+  .character-meta {
     flex: 1 1 100%;
     text-align: center;
   }
 
   .response-categories,
   .character-response {
-    flex-wrap: wrap;
-    align-items: flex-start;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+  }
+
+  .response-categories h3,
+  .response-categories p,
+  .character-response h2,
+  .character-response p {
+    padding: 0.72rem 0.45rem;
+    font-size: 0.76rem;
+    letter-spacing: 0.02em;
+  }
+
+  .response-categories h3,
+  .response-categories p {
+    font-size: 0.67rem;
+    letter-spacing: 0.04em;
+  }
+
+  .character-response h2 {
+    font-size: 0.8rem;
   }
 }
 

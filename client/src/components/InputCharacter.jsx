@@ -17,7 +17,7 @@ function InputCharacter({ characters }) {
     const MAX_GUESSES = 5;
     const currentGuessNumber = Math.min(selectedCharacters.length + 1, MAX_GUESSES);
     const [hasWon, setHasWon] = useState(false)
-    const hasLost = selectedCharacters.length >= MAX_GUESSES;
+    const hasLost = !hasWon && selectedCharacters.length >= MAX_GUESSES;
     const isGameOver = hasWon || hasLost
 
     const response_animation_ms = 1000
@@ -121,8 +121,12 @@ function InputCharacter({ characters }) {
                 {selectedCharacters.length > 0 && (
                     <div className="response-categories">
                         <h3>Name</h3>
-                        <p>Series</p>
                         <p>Gender</p>
+                        <p>Age</p>
+                        <p>Series</p>
+                        <p>Genre</p>
+                        <p>Released in:</p>
+                        <p>Role</p>
                         <p>Hair Color</p>
                     </div>
                 )}

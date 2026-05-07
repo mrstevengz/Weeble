@@ -2,6 +2,7 @@ import path from "path";
 import express, { json, urlencoded } from "express";
 import cors from "cors";
 import "dotenv/config";
+import helmet from "helmet";
 
 import connectDB from "./config/db.js";
 import Character from "./models/Character.js";
@@ -14,9 +15,12 @@ connectDB();
 
 app.use(
   cors({
+    origin: process.env.FRONTEND_URL || "http://localhost:5173",
     credentials: true,
   }),
 );
+
+app.use(helmet());
 
 //Para aceptar http requests en json
 app.use(json({ limit: "10kb" }));
