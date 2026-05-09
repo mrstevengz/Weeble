@@ -21,19 +21,16 @@ app.use(
     credentials: true,
   }),
 );
-
-app.use(express.static(path.join(__dirname, "../client/dist")));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
-});
 app.use(helmet());
-
-//Para aceptar http requests en json
 app.use(json({ limit: "10kb" }));
 app.use(urlencoded({ extended: true, limit: "10kb" }));
 app.use("/api/characters", characterRoutes);
 app.set("trust proxy", 1);
+
+app.use(express.static(path.join(__dirname, "../client/dist")));
+app.get(/(.*)/, (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+});
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
