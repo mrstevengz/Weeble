@@ -1,4 +1,5 @@
 import path from "path";
+import { fileURLToPath } from "url";
 import express, { json, urlencoded } from "express";
 import cors from "cors";
 import "dotenv/config";
@@ -10,6 +11,7 @@ import characterRoutes from "./routes/characters.js";
 
 const app = express();
 const port = process.env.PORT || 5000;
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 connectDB();
 
@@ -20,6 +22,11 @@ app.use(
   }),
 );
 
+app.use(express.static(path.join(__dirname, "../client/dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+});
 app.use(helmet());
 
 //Para aceptar http requests en json
