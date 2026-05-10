@@ -41,8 +41,8 @@
       transparent 30rem
     ),
     linear-gradient(rgba(13, 10, 19, 0.75), rgba(13, 10, 19, 0.8)),
-    url(https://wallpaperaccess.com/full/9336992.gif),
-    linear-gradient(135deg, #0d0a13 12%, #17131f 70%, #2a2138 100%);
+    url(/client/public/background.webp)
+      linear-gradient(135deg, #0d0a13 12%, #17131f 70%, #2a2138 100%);
 }
 
 .loading-container::before,
