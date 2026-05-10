@@ -1,4 +1,4 @@
-# Weeble
+# Weeble V 1.0
 
 Un juego de adivinanza de personajes de anime y manga, de estilo diario, inspirado en Wordle. Tienes **6 intentos** para identificar al personaje secreto usando las pistas que te da cada intento.
 
