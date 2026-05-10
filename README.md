@@ -1,121 +1,121 @@
 # Weeble
 
-A daily-style animanga character guessing game inspired by Wordle. You have **6 attempts** to identify a secret character from anime and manga by reading the clues each guess gives you.
+Un juego de adivinanza de personajes de anime y manga, de estilo diario, inspirado en Wordle. Tienes **6 intentos** para identificar al personaje secreto usando las pistas que te da cada intento.
 
-**Live deployment:** [https://weeble.onrender.com/](https://weeble.onrender.com/)
-
----
-
-## How It Works
-
-Type any animanga character name into the search field and select one from the autocomplete dropdown. After each guess, the game compares your pick against the secret character across 8 attributes:
-
-| Attribute       | Description                                                                                                                                |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Name**        | The character's name                                                                                                                       |
-| **Gender**      | Male, Female, etc.                                                                                                                         |
-| **Age Group**   | Ordered category (Child → Teen → Young Adult → Adult → Older → Ageless). An arrow (↑/↓) indicates which direction the secret character is. |
-| **Series**      | The anime/manga they appear in                                                                                                             |
-| **Genre**       | The demographic/genre of the series (Shonen, Seinen, Shojo, etc.)                                                                          |
-| **Released In** | The decade the series debuted. An arrow (↑/↓) tells you if the secret series is older or newer.                                            |
-| **Role**        | Protagonist, Antagonist, Supporting, etc.                                                                                                  |
-| **Hair Color**  | The character's hair color                                                                                                                 |
-
-Attributes highlighted in **green** are an exact match. Use the directional arrows on ordinal fields to narrow down your answer. You get 6 guesses total — use them wisely.
-
-Your progress is saved in `localStorage`, so refreshing the page restores your current game.
+**Deployment:** [https://weeble.onrender.com/](https://weeble.onrender.com/)
 
 ---
 
-## Tech Stack
+## Cómo se juega
+
+Escribe el nombre de cualquier personaje de animanga en el campo de búsqueda y selecciónalo del desplegable. Tras cada intento, el juego compara tu elección con el personaje secreto en 8 atributos:
+
+| Atributo            | Descripción                                                                                                                                              |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Nombre**          | El nombre del personaje                                                                                                                                  |
+| **Género**          | Masculino, Femenino, etc.                                                                                                                                |
+| **Grupo de edad**   | Categoría ordenada (Niño → Adolescente → Adulto Joven → Adulto → Mayor → Atemporal). Una flecha (↑/↓) indica en qué dirección está el personaje secreto. |
+| **Serie**           | El anime o manga en el que aparece                                                                                                                       |
+| **Género de serie** | El demographic/género de la serie (Shonen, Seinen, Shojo, etc.)                                                                                          |
+| **Publicado en**    | La década en que debutó la serie. Una flecha (↑/↓) indica si la serie secreta es más antigua o más reciente.                                             |
+| **Rol**             | Protagonista, Antagonista, Secundario, etc.                                                                                                              |
+| **Color de pelo**   | El color de cabello del personaje                                                                                                                        |
+
+Los atributos resaltados en **verde** son una coincidencia exacta. Usa las flechas en los campos ordinales para afinar tu respuesta. Tienes 6 intentos en total — úsalos con cuidado.
+
+Tu progreso se guarda en `localStorage`, por lo que recargar la página restaura la partida actual.
+
+---
+
+## Stack tecnológico
 
 ### Frontend — `client/`
 
-Built as a single-page application with:
+Construido como una Single Page Application (SPA) con:
 
-- **[React 19](https://react.dev/)** — UI library. The entire game interface is built with functional components and hooks.
-- **[React Router DOM v7](https://reactrouter.com/)** — Client-side routing between the loading screen (`/`) and the game (`/home`).
-- **[Vite 8](https://vitejs.dev/)** — Build tool and dev server. Extremely fast HMR during development; produces an optimized static bundle for production.
-- **[Axios](https://axios-http.com/)** — HTTP client used in `charsApi.js` to fetch the character list from the backend API.
-- **[Lucide React](https://lucide.dev/)** — Icon library, used for the help button (CircleAlert) in the navbar.
-- **Custom CSS** — No UI framework. All styles are hand-written in `App.css` and `global.css`.
+- **[React 19](https://react.dev/)** — Biblioteca de UI. Toda la interfaz del juego está construida con componentes funcionales y hooks.
+- **[React Router DOM v7](https://reactrouter.com/)** — Enrutamiento del lado del cliente entre la pantalla de carga (`/`) y el juego (`/home`).
+- **[Vite 8](https://vitejs.dev/)** — Herramienta de build y servidor de desarrollo. HMR extremadamente rápido en desarrollo; genera un bundle optimizado para producción.
+- **[Axios](https://axios-http.com/)** — Cliente HTTP usado en `charsApi.js` para obtener la lista de personajes desde la API del backend.
+- **[Lucide React](https://lucide.dev/)** — Biblioteca de íconos, usada para el botón de ayuda (CircleAlert) en la barra de navegación.
+- **CSS personalizado** — Sin framework de UI. Todos los estilos están escritos a mano en `App.css` y `global.css`.
 
 ### Backend — `server/`
 
-A REST API built with:
+Una API REST construida con:
 
-- **[Node.js](https://nodejs.org/)** — JavaScript runtime.
-- **[Express 5](https://expressjs.com/)** — Web framework. Handles API routes and also serves the built React SPA as static files (so the same process serves both the API and the frontend in production).
-- **[Mongoose 9](https://mongoosejs.com/)** — MongoDB ODM. Defines the `Character` schema and handles all database queries.
-- **[MongoDB](https://www.mongodb.com/)** — The database that stores all animanga character data.
-- **[Helmet](https://helmetjs.github.io/)** — Sets security-related HTTP response headers automatically.
-- **[CORS](https://github.com/expressjs/cors)** — Restricts cross-origin requests to the configured frontend URL.
-- **[dotenv](https://github.com/motdotla/dotenv)** — Loads environment variables (`MONGODB_URI`, `PORT`, `FRONTEND_URL`) from a `.env` file.
-- **[Nodemon](https://nodemon.io/)** — Dev-only: auto-restarts the server on file changes.
+- **[Node.js](https://nodejs.org/)** — Entorno de ejecución de JavaScript.
+- **[Express 5](https://expressjs.com/)** — Framework web. Maneja las rutas de la API y también sirve la SPA de React como archivos estáticos (un solo proceso sirve tanto la API como el frontend en producción).
+- **[Mongoose 9](https://mongoosejs.com/)** — ODM para MongoDB. Define el esquema `Character` y gestiona todas las consultas a la base de datos.
+- **[MongoDB](https://www.mongodb.com/)** — La base de datos que almacena todos los personajes de animanga.
+- **[Helmet](https://helmetjs.github.io/)** — Configura automáticamente las cabeceras HTTP relacionadas con seguridad.
+- **[CORS](https://github.com/expressjs/cors)** — Restringe las peticiones de origen cruzado a la URL del frontend configurada.
+- **[dotenv](https://github.com/motdotla/dotenv)** — Carga variables de entorno (`MONGODB_URI`, `PORT`, `FRONTEND_URL`) desde un archivo `.env`.
+- **[Nodemon](https://nodemon.io/)** — Solo en desarrollo: reinicia el servidor automáticamente ante cambios en los archivos.
 
 ---
 
-## Project Structure
+## Estructura del proyecto
 
 ```
 Weeble/
-├── client/                     # React frontend
+├── client/                     # Frontend en React
 │   ├── public/
 │   │   └── images/background.webp
 │   └── src/
 │       ├── components/
-│       │   ├── CharacterCard.jsx       # Dropdown suggestion item
-│       │   ├── CharacterResponse.jsx   # Renders one guess row with color-coded attributes
-│       │   ├── InputCharacter.jsx      # Main game UI: search input, dropdown, guess history
-│       │   ├── NavBar.jsx              # Top bar with title and "How to Play" modal
-│       │   └── ResetModal.jsx          # Reusable modal overlay (win/lose/help)
+│       │   ├── CharacterCard.jsx       # Ítem del desplegable de sugerencias
+│       │   ├── CharacterResponse.jsx   # Renderiza una fila de intento con atributos coloreados
+│       │   ├── InputCharacter.jsx      # UI principal: input, desplegable, historial de intentos
+│       │   ├── NavBar.jsx              # Barra superior con título y modal "Cómo jugar"
+│       │   └── ResetModal.jsx          # Modal reutilizable (victoria/derrota/ayuda)
 │       ├── hooks/
-│       │   ├── useGameState.js         # Core game logic: secret selection, guesses, win/lose, localStorage
-│       │   └── enumComparisons.js      # Helpers for ordinal direction arrows (age group, decade)
+│       │   ├── useGameState.js         # Lógica central: personaje secreto, intentos, victoria/derrota, localStorage
+│       │   └── enumComparisons.js      # Helpers para las flechas de dirección en campos ordinales
 │       ├── lib/
-│       │   └── ParticleEngine.js       # Canvas-based particle system for the loading screen
+│       │   └── ParticleEngine.js       # Sistema de partículas en canvas para la pantalla de carga
 │       ├── pages/
-│       │   ├── Loading.jsx             # Splash/loading screen with particle animation
-│       │   └── Home.jsx                # Main game page
+│       │   ├── Loading.jsx             # Pantalla de carga con animación de partículas
+│       │   └── Home.jsx                # Página principal del juego
 │       ├── services/
-│       │   └── charsApi.js             # Axios wrapper for the /api/characters endpoint
+│       │   └── charsApi.js             # Wrapper de Axios para el endpoint /api/characters
 │       ├── styles/
 │       │   ├── App.css
 │       │   └── global.css
-│       ├── App.jsx                     # Root component: fetches characters, sets up routes
-│       └── main.jsx                    # React DOM entry point
+│       ├── App.jsx                     # Componente raíz: obtiene personajes y configura las rutas
+│       └── main.jsx                    # Punto de entrada de React DOM
 │
-└── server/                     # Express backend
+└── server/                     # Backend en Express
     ├── config/
-    │   └── db.js               # Mongoose connection setup
+    │   └── db.js               # Configuración de la conexión con Mongoose
     ├── models/
-    │   └── Character.js        # Mongoose schema: name, gender, age_group, series, role, hair_color, etc.
+    │   └── Character.js        # Esquema Mongoose: name, gender, age_group, series, role, hair_color, etc.
     ├── routes/
-    │   └── characters.js       # GET /api/characters and GET /api/characters/:id
-    └── server.js               # Express app entry point
+    │   └── characters.js       # GET /api/characters y GET /api/characters/:id
+    └── server.js               # Punto de entrada de la aplicación Express
 ```
 
 ---
 
-## Architecture
+## Arquitectura
 
-The project is a **full-stack monorepo** where the Express server handles two responsibilities:
+El proyecto es un **monorepo full-stack** donde el servidor Express cumple dos responsabilidades:
 
-1. **API** — serves character data from MongoDB at `/api/characters`.
-2. **Static file hosting** — in production, it serves the Vite-built React bundle from `client/dist`, so a single Render service runs the entire app.
+1. **API** — sirve los datos de personajes desde MongoDB en `/api/characters`.
+2. **Archivos estáticos** — en producción, sirve el bundle de React generado por Vite desde `client/dist`, de modo que un único servicio de Render ejecuta toda la aplicación.
 
-The game runs entirely on the client. `useGameState` picks a random secret character on startup, tracks guesses in React state, persists them in `localStorage` (so a page refresh doesn't reset the game), and opens a modal on win or loss after 6 guesses.
+El juego corre completamente en el cliente. `useGameState` elige un personaje secreto aleatorio al iniciar, registra los intentos en el estado de React, los persiste en `localStorage` (para que recargar la página no reinicie la partida) y abre un modal al ganar o perder tras 6 intentos.
 
 ---
 
-## Running Locally
+## Correr localmente
 
 **Backend**
 
 ```bash
 cd server
 npm install
-# Create a .env file with MONGODB_URI and FRONTEND_URL
+# Crear un archivo .env con MONGODB_URI y FRONTEND_URL
 npm run dev
 ```
 
@@ -127,10 +127,10 @@ npm install
 npm run dev
 ```
 
-The Vite dev server runs on `http://localhost:5173` and the Express API on `http://localhost:5000`.
+El servidor de desarrollo de Vite corre en `http://localhost:5173` y la API de Express en `http://localhost:5000`.
 
 ---
 
 ## Deployment
 
-Deployed on **[Render](https://render.com/)**.[https://weeble.onrender.com/](https://weeble.onrender.com/).
+Desplegado en **[Render](https://render.com/)**. El comando de build ejecuta `vite build` dentro de `client/`, y el servidor Express arranca con `node server.js`, sirviendo tanto la API como la app de React compilada desde el mismo origen en [https://weeble.onrender.com/](https://weeble.onrender.com/).
