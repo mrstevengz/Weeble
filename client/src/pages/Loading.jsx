@@ -47,7 +47,7 @@ function Loading({ loading, error}) {
                 <canvas ref={canvasRef} className='canvas-bg'/>
                 <div className='loading-content'>
                     <h1>Weeble</h1>
-                    <h2>5 tries to guess the correct animanga character.</h2>
+                    <h2>6 tries to guess the correct animanga character.</h2>
                     {error && <p>{error}</p>}
                     {loading && <div className='spinner' />}
                     

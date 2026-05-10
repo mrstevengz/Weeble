@@ -30,7 +30,7 @@ export default function NavBar() {
                <p className="how-to-eyebrow">Quick guide</p>
                <h2 className="how-to-title">How to Play</h2>
                <p className="how-to-intro">
-                    Find the secret animanga character before your 5 guesses run out.
+                    Find the secret animanga character before your 6 guesses run out.
                </p>
 
                <div className="how-to-steps">
@@ -48,7 +48,7 @@ export default function NavBar() {
                     </div>
                </div>
 
-               <p className="how-to-note">You get 5 total guesses. Choose carefully.</p>
+               <p className="how-to-note">You get 6 total guesses. Choose carefully.</p>
             </div>
         </ResetModal>
     </>

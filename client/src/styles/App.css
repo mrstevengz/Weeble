@@ -28,7 +28,8 @@
   position: fixed;
   inset: 0;
   overflow: hidden;
-  background:
+  background-color: #0d0a13;
+  background-image:
     radial-gradient(
       circle at top left,
       rgba(184, 164, 255, 0.2),
@@ -39,7 +40,9 @@
       rgba(74, 55, 119, 0.3),
       transparent 30rem
     ),
-    linear-gradient(135deg, #0d0a13 0%, #17131f 52%, #2a2138 100%);
+    linear-gradient(rgba(13, 10, 19, 0.75), rgba(13, 10, 19, 0.8)),
+    url(https://wallpaperaccess.com/full/9336992.gif),
+    linear-gradient(135deg, #0d0a13 12%, #17131f 70%, #2a2138 100%);
 }
 
 .loading-container::before,
@@ -71,7 +74,7 @@
       rgba(255, 255, 255, 0.025) 29px,
       transparent 31px
     );
-  opacity: 0.78;
+  opacity: 0.7;
   transform: rotate(-4deg);
 }
 
@@ -370,7 +373,7 @@
 .character-response {
   width: 100%;
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 2fr 1.25fr 1.3fr 1.7fr 1.2fr;
+  grid-template-columns: 2fr 1.1fr 2fr 2fr 1.25fr 1.3fr 1.7fr 1.2fr;
   column-gap: 1px;
   margin-top: 0.65rem;
   border-radius: 10px;
@@ -432,6 +435,13 @@
   overflow-wrap: anywhere;
   word-break: break-word;
   box-sizing: border-box;
+
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  flex-direction: row;
 }
 
 .character-response h2 {

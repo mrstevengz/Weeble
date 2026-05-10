@@ -63,7 +63,7 @@ function InputCharacter({ characters }) {
                         <p>Age</p>
                         <p>Series</p>
                         <p>Genre</p>
-                        <p>Released in:</p>
+                        <p>Released in</p>
                         <p>Role</p>
                         <p>Hair Color</p>
                     </div>
@@ -82,7 +82,7 @@ function InputCharacter({ characters }) {
 
                 {isGameOver && <button className="button-play" onClick={startNewGame}>Play Again</button>}
 
-                {/* Modal cuando se PIERDE el juego (5/5 intentos) */}
+                {/* Modal cuando se PIERDE el juego (6/6 intentos) */}
 
                 <ResetModal isOpen={isModalOpen} onClose = {handleCloseModal}>
                     {secretCharacter && (

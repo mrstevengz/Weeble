@@ -5,7 +5,7 @@ const KEYS = {
   SECRET: "weeble_secret",
 };
 
-const MAX_GUESSES = 5;
+const MAX_GUESSES = 6;
 const response_animation_ms = 1000;
 
 function delay(ms) {
