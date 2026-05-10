@@ -41,7 +41,7 @@
       transparent 30rem
     ),
     linear-gradient(rgba(13, 10, 19, 0.75), rgba(13, 10, 19, 0.8)),
-    url(/client/public/images/background.webp)
+    url(/images/background.webp)
       linear-gradient(135deg, #0d0a13 12%, #17131f 70%, #2a2138 100%);
 }
 
