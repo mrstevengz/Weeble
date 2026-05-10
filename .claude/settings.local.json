@@ -1,8 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "PowerShell(Get-ChildItem \"c:\\\\Users\\\\seque\\\\OneDrive\\\\Documents\\\\JS\\\\Weeble\\\\client\\\\src\" -Recurse | Where-Object { !$_.PSIsContainer } | Select-Object FullName)",
-      "PowerShell(Get-ChildItem \"c:\\\\Users\\\\seque\\\\OneDrive\\\\Documents\\\\JS\\\\Weeble\\\\server\" | Where-Object { !$_.PSIsContainer } | Select-Object Name)"
-    ]
-  }
-}
